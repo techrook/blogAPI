@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Users = require('../models/user')
+const Users = require('./user.models')
 
 const Schema =  mongoose.Schema;
 
@@ -29,8 +29,8 @@ const BlogSchema = new Schema ({
         ref: "users"
     },
     state:{
-        type: Number,
-        default: 1 
+        type: String,
+        default: "draft" 
     },
     read_count: {
         type: Number
@@ -38,7 +38,7 @@ const BlogSchema = new Schema ({
     read_time:{
         type: String
     },
-    published_at : {
+    timestamp : {
         type: Date,
         default: Date.now
     }

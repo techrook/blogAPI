@@ -5,12 +5,12 @@ const app = express()
 const bodyParser = require('body-parser')
 require('dotenv').config();
 require('./db').connectToDatabase();
-require('./controllers/auth')
+require('./controllers/auth.controller')
 
 //local dependencies 
-const authRouter = require("./routes/auth")
-const blogRouter = require('./routes/blog');
-const userRouter = require('./routes/user')
+const authRouter = require("./routes/auth.route")
+const blogRouter = require('./routes/blog.route');
+const userRouter = require('./routes/user.route')
 const port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,7 +23,7 @@ app.use('/', authRouter);
 app.use('/blogs', blogRouter); 
 
 //users endpoint 
-app.use('/users', userRouter);
+app.use('/users',passport.authenticate('jwt', { session: false }), userRouter);
 
 
 //root page

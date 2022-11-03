@@ -1,4 +1,4 @@
-const UserModel = require("../models/user")
+const UserModel = require("../models/user.models")
 
 const createNewUser = (req, res) =>{
     const user= req.body
@@ -19,7 +19,7 @@ const createNewUser = (req, res) =>{
 
 const updateUserDetails = (req, res) =>{
     const userUpdate = req.body
-    const id = '6358678405b78ea50e1ef2b9'
+    const id = req.params.userId
 
     UserModel.findByIdAndUpdate(id, userUpdate)
         .then(userUpdate => {

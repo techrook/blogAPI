@@ -4,7 +4,7 @@ const localStrategy = require('passport-local').Strategy;
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 //local dependencies
-const UserModel = require('../models/user');
+const UserModel = require('../models/user.models');
 
 // middle ware function to extract secret_token for authorization
 passport.use(
