@@ -33,7 +33,7 @@ const getAllBlogs =  async (req, res) =>{
         }
     }
     
-    if (order === 'asc'){
+    if (order === 'desc'){
         mySort = {
             readTime: 0,
             readCount: 0,

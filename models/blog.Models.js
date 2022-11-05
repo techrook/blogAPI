@@ -30,7 +30,8 @@ const BlogSchema = new Schema ({
     },
     state:{
         type: String,
-        default: "draft" 
+        default: "draft",
+        require: true 
     },
     read_count: {
         type: Number
