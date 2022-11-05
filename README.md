@@ -164,7 +164,7 @@ Success
 
 ### Get blog
 
-- Route: /orders/:id
+- Route: /blogs/:id
 - Method: GET
 - Header
     - Authorization: Bearer {token}
@@ -189,7 +189,7 @@ Success
 
 ### Get blogs
 
-- Route: /blogss
+- Route: /blogs
 - Method: GET
 - Header:
     - Authorization: Bearer {token}
