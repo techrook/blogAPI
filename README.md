@@ -140,8 +140,8 @@ Success
 }
 ```
 ---
-### publish blog
-- Route: /orders/publishblog/:blogId
+### Publish blog
+- Route: /orders/publishblog/:authorId/:blogId
 - Method: PATCH
 - Header
     - Authorization: Bearer {token}
@@ -162,7 +162,7 @@ Success
 ```
 ---
 
-### Get Order
+### Get blog
 
 - Route: /orders/:id
 - Method: GET
@@ -187,17 +187,15 @@ Success
 ```
 ---
 
-### Get Orders
+### Get blogs
 
-- Route: /orders
+- Route: /blogss
 - Method: GET
 - Header:
     - Authorization: Bearer {token}
 - Query params: 
     - page (default: 1)
     - order (options: asc | desc, default: desc)
-    - state
-    - created_at
 - Responses
 
 Success
@@ -215,6 +213,58 @@ Success
 }
 ```
 ---
+### Update blogs
+
+- Route: /blogs/:authorId/:id
+- Method: PATCH
+- Header
+    - Authorization: Bearer {token}
+- Body: 
+```
+{
+     
+        "title": 'elon charges  8$ '
+        
+}
+```
+- Depends on blog property you want to update
+Success
+```
+{
+    message: "blog sucessfully updated",
+    {
+    state: "published",
+    read_count: 0,
+    created_at: 2022-11-1T02:37:00.791Z+0100,
+    blogInfo: { 
+        "title": 'elon charges  8$ ',
+         "description": "elon charges  8$ for blue tick because twitter is loosing daily and wants to change that", 
+         "body": 'elon charges  8$ for blue tick because twitter is loosing daily and wants to change that ...', 
+         "tags": "tech"
+         }
+    }
+}
+```
+---
+
+### Delete blogs
+
+- Route: /blogs/:authorId/:id
+- Method: DELETE
+- Header
+    - Authorization: Bearer {token}
+
+```
+{
+    {
+            message: "deleted sucessfully"
+        }
+}
+```
+
+---
+
+
 
 ...
 

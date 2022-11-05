@@ -5,7 +5,7 @@ const blogModel = require('../models/blog.Models');// blog model
 
 async function confirmBlogAuthor(req, res, next){
     const authorId = req.query.authorId
-    const blogId = req.params.blogId
+    const id = req.params.id
 
     blogModel.findById(blogId)
     .then(blog =>{

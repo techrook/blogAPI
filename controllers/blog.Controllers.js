@@ -180,7 +180,7 @@ const updateBlog = (req, res) =>{
 
 // publishblog from draft to published function
 const publishBlog = (req, res) =>{
-    const blogId = req.params.blogId
+    const id = req.params.id
 
     blogModel.findByIdAndUpdate(blogId, {state : "published"})
     .then((blog) =>{
