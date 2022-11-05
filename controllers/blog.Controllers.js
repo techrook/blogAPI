@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-const toId = mongoose.Types.ObjectId;
 
 const blogModel = require('../models/blog.Models');// blog model
 
 let count=0; // intial count vaule
 
+
 // update readcouount function
 async function countMiddleware(req,res,next){ 
     const readCount = {read_count : count++ }
-    await blogModel.updateOne(readCount )
+    await blogModel.updateMany({}, readCount )
      if(next){
         
         next()
@@ -17,26 +17,6 @@ async function countMiddleware(req,res,next){
      }
 }
 
-async function confirmBlogAuthor(req, res, next){
-    const authorId = req.query.authorId
-    const blogId = req.params.blogId
-
-    blogModel.findById(blogId)
-    .then(blog =>{
-        if(authorId === blog.author){
-            next()
-        }
-    }).catch(err => {
-        res.status(401)
-        res.send({
-            message: "your not the author this blog"
-        })
-    })
-    next()
-    
-}
-
-const blogState = {state : "published"}
 // get all blogs controller
 const getAllBlogs =  async (req, res) =>{
 
@@ -117,7 +97,6 @@ const getOneBlog = async (req, res) =>{
 const createBlog = (req,res) =>{
     const blogData = req.body;
 
-    console.log(req.params)
     const authorId =  req.params.authorId;
 
 
@@ -223,8 +202,7 @@ module.exports = {
     createBlog,
     deleteBlog,
     updateBlog,
-    countMiddleware,
     publishBlog,
-    confirmBlogAuthor
+    countMiddleware
 
 }

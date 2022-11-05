@@ -8,10 +8,9 @@ require('./db').connectToDatabase();
 require('./controllers/auth.controller')
 
 //local dependencies 
-const authRouter = require("./routes/auth.route")
+const authRouter = require("./routes/auth.route");
 const blogRouter = require('./routes/blog.route');
-const userRouter = require('./routes/user.route')
-const port = process.env.PORT;
+const userRouter = require('./routes/user.route');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -28,15 +27,13 @@ app.use('/users',passport.authenticate('jwt', { session: false }), userRouter);
 
 //root page
 app.get('/', (req,res)=>{
-    res.send('welcome to falseblog')
+    return res.json({ status: true })
 });
 
 
-
-
-//starting server
-app.listen(port, ()=>{
-    console.log(`server started at localhost:${port}`)
+app.use('*', (req, res) => {
+    return res.status(404).json({ message: ' not found' })
 })
 
 
+module.exports = app;

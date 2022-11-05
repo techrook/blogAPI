@@ -11,7 +11,7 @@ const authrouter = express.Router();
 authrouter.post(
     '/signup',
     Passport.authenticate('signup', {session: false}), async(req, res, next) =>{
-        res.json({
+        res.status(201).json({
             message: 'signup successful',
             user: req.user
         });

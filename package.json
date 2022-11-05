@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": " jest --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +17,16 @@
     "express": "^4.18.2",
     "gitignore": "^0.7.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.9.5",
     "mongoose": "^6.6.6",
     "nodemon": "^2.0.20",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2",
+    "supertest": "^6.3.1"
   }
 }
