@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // authentication endpoint
-app.use('/authentication', authRouter);
+app.use('/', authRouter);
 
 // blogs endpoint
 app.use('/blogs', blogRouter); 
