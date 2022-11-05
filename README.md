@@ -266,7 +266,5 @@ Success
 
 
 
-...
-
 ## Contributor
 - Itohowo Monday

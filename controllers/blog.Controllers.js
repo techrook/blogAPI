@@ -182,7 +182,7 @@ const updateBlog = (req, res) =>{
 const publishBlog = (req, res) =>{
     const id = req.params.id
 
-    blogModel.findByIdAndUpdate(blogId, {state : "published"})
+    blogModel.findByIdAndUpdate(id, {state : "published"})
     .then((blog) =>{
         res.status(202)
         res.send(blog)
