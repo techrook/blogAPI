@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // authentication endpoint
-app.use('/', authRouter);
+app.use('/authentication', authRouter);
 
 // blogs endpoint
 app.use('/blogs', blogRouter); 
@@ -32,6 +32,7 @@ app.get('/', (req,res)=>{
 });
 
 
+//ghost route
 app.use('*', (req, res) => {
     return res.status(404).json({ message: ' not found' })
 })
