@@ -8,9 +8,10 @@ require('./db').connectToDatabase();
 require('./controllers/auth.controller')
 
 //local dependencies 
-const authRouter = require("./routes/auth.route");
+const authRouter = require("./routes/auth.route")
 const blogRouter = require('./routes/blog.route');
-const userRouter = require('./routes/user.route');
+const userRouter = require('./routes/user.route')
+const port = process.env.PORT ;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -33,6 +34,11 @@ app.get('/', (req,res)=>{
 
 app.use('*', (req, res) => {
     return res.status(404).json({ message: ' not found' })
+})
+
+//starting server
+app.listen(port, ()=>{
+    console.log(`server started at localhost:${port}`)
 })
 
 
