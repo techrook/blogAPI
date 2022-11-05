@@ -27,14 +27,14 @@ app.use('/users',passport.authenticate('jwt', { session: false }), userRouter);
 
 
 //root page
-app.use('/', (req,res)=>{
+app.get('/', (req,res)=>{
     return res.send({ status: true })
 });
 
 
 //ghost route
 app.use('*', (req, res) => {
-    return res.status(404).json({ message: ' not found' })
+    return res.status(404).send({ message: ' not found' })
 })
 
 //starting server
