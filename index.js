@@ -27,8 +27,8 @@ app.use('/users',passport.authenticate('jwt', { session: false }), userRouter);
 
 
 //root page
-app.get('/', (req,res)=>{
-    return res.json({ status: true })
+app.use('/', (req,res)=>{
+    return res.send({ status: true })
 });
 
 
