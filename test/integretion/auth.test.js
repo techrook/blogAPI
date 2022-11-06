@@ -5,19 +5,7 @@ const app = require("../../index");
 
 
 describe('Authentication', () => {
-    let conn;
-
-    beforeAll(async () => {
-        conn = await connect()
-    })
-
-    afterEach(async () => {
-        await conn.cleanup()
-    })
-
-    afterAll(async () => {
-        await conn.disconnect()
-    })
+ 
 
 
     it("should signup users", async() => {
