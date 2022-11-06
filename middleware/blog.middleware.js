@@ -6,6 +6,7 @@ const blogModel = require('../models/blog.Models');// blog model
 async function confirmBlogAuthor(req, res, next){
     const authorId = req.query.authorId
     const id = req.params.id
+    const blogAuthor =blog.author 
 
     blogModel.findById(id)
     .then(blog =>{
@@ -17,6 +18,8 @@ async function confirmBlogAuthor(req, res, next){
         res.send({
             message: "your not the author this blog"
         })
+        console.log(authorId)
+        console.log(req.user)
     })
     next()
     
