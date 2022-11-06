@@ -3,18 +3,18 @@ require('dotenv').config();
 
 
 
-     function connectToDatabase() {
-    mongoose.connect(process.env.MONGODB_URL) 
-    .then(()=>{
-        console.log("database sucessfully connected")
-    })
-    .catch(()=>{
-        console.log("An error occured database not connected ")
-    })
+    const connect = (url) => {
+        mongoose.connect(process.env.MONGODB_URL)
+    
+        mongoose.connection.on("connected", () => {
+            console.log("Connected to MongoDB Successfully");
+        });
+    
+        mongoose.connection.on("error", (err) => {
+            console.log("An error occurred while connecting to MongoDB");
+            console.log(err);
+        });
+    }
 
 
-
-
-}
-
-module.exports = {connectToDatabase}
+module.exports = {connect}

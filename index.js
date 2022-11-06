@@ -4,7 +4,7 @@ const passport = require('passport');
 const app = express()
 const bodyParser = require('body-parser')
 require('dotenv').config();
-require('./db').connectToDatabase();
+require('./db').connect();
 require('./controllers/auth.controller')
 
 //local dependencies 
@@ -38,9 +38,7 @@ app.use('*', (req, res) => {
 })
 
 //starting server
-app.listen(port, ()=>{
-    console.log(`server started at localhost:${port}`)
-})
+
 
 
 module.exports = app;

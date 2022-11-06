@@ -4,13 +4,26 @@ const userModel = require('../../models/user.models');
 const app = require("../../index");
 
 
-describe('Authentication', () => {
- 
+describe('Authentication',  () => {
+    jest.useFakeTimers()
+    let conn;
+
+    beforeAll(async () => {
+        conn = await connect()
+    })
+
+    afterEach(async () => {
+        await conn.cleanup()
+    })
+
+    afterAll(async () => {
+        await conn.disconnect()
+    })
 
 
     it("should signup users", async() => {
         const response = await request(app).post('/signup').send({
-            email:"monday23@gmail.com",
+            email:"23@gmail.com",
             password: "123456"
         })
 
@@ -23,11 +36,11 @@ describe('Authentication', () => {
 
     it("should login users",  async () => {
 
-        const user = await userModel.create({ email:"monday23@gmail.com", password: '123456'});
+        const user = await userModel.create({ email:"23@gmail.com", password: '123456'});
 
 
         const response = await request(app).post('/login').send({
-            email:"monday23@gmail.com",
+            email:"23@gmail.com",
             password: "123456"
         })
 

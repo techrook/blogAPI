@@ -7,8 +7,7 @@ let count=0; // intial count vaule
 
 // update readcouount function
 async function countMiddleware(req,res,next){ 
-    const readCount = {read_count : count++ }
-    await blogModel.updateMany({}, readCount )
+    await blogModel.updateMany({}, { $inc: { read_count: +1 }} )
      if(next){
         
         next()
