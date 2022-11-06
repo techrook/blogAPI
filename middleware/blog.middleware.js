@@ -4,15 +4,15 @@ const blogModel = require('../models/blog.Models');// blog model
 
 
 async function confirmBlogAuthor(req, res, next){
-    const authorId = req.params.authorId;
     const id = req.params.id;
     const author = req.user._id 
+    const authorToString = author.toString()
     
     blogModel.findById(id)
     .then(blog =>{
         const blogAuthor = blog.author
         const stringfyBlogAuthor = blogAuthor.toString()
-        if(author === stringfyBlogAuthor){
+        if(authorToString === stringfyBlogAuthor){
             next()
         }
     }).catch(err => {
