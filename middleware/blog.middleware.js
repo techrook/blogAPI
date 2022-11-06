@@ -4,13 +4,12 @@ const blogModel = require('../models/blog.Models');// blog model
 
 
 async function confirmBlogAuthor(req, res, next){
-    const authorId = req.query.authorId
-    const id = req.params.id
-    const blogAuthor =blog.author 
+    const authorId = req.query.authorId;
+    const id = req.params.id;
 
     blogModel.findById(id)
     .then(blog =>{
-        if(authorId === blogAuthor){
+        if(authorId === blog.author){
             next()
         }
     }).catch(err => {
@@ -18,13 +17,15 @@ async function confirmBlogAuthor(req, res, next){
         res.send({
             message: "your not the author this blog"
         })
-        console.log(authorId)
-        console.log(req.user)
+        console.log(authorId);
+        console.log(req.user);
+        console.log(blog.author)
     })
-    next()
+    next();
     
 }
 
 module.exports = {
     confirmBlogAuthor
 }
+
