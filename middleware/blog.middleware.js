@@ -11,7 +11,8 @@ async function confirmBlogAuthor(req, res, next){
     blogModel.findById(id)
     .then(blog =>{
         const blogAuthor = blog.author
-        if(author == authorId){
+        const stringfyBlogAuthor = blogAuthor.toString()
+        if(author === stringfyBlogAuthor){
             next()
         }
     }).catch(err => {
