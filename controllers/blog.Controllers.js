@@ -155,18 +155,11 @@ const updateBlog = (req, res) =>{
 
     blogModel.findByIdAndUpdate(blogId, blogUpdates)
     .then(blog =>{
-        if(blog.author === authorId){
         res.status(202);
         res.send({
             message: "blog has successfully been updated",
             data : blog
         })
-    }else {
-        res.status(401)
-        res.send({
-            message: "you do not have permission to update this blog"
-        })
-    }
     })
     .catch((err) =>{
         res.status(500)
