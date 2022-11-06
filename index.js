@@ -11,7 +11,7 @@ require('./controllers/auth.controller')
 const authRouter = require("./routes/auth.route")
 const blogRouter = require('./routes/blog.route');
 const userRouter = require('./routes/user.route')
-const port = process.env.PORT ;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,7 +38,7 @@ app.use('*', (req, res) => {
 })
 
 //starting server
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
     console.log(`server started at localhost:${port}`)
 })
 

@@ -141,11 +141,11 @@ Success
 ```
 ---
 ### Publish blog
-- Route: /orders/publishblog/:authorId/:blogId
+- Route: /blogs/publishblog/:blogId
 - Method: PATCH
 - Header
     - Authorization: Bearer {token}
-
+-confim
 Success
 ```
 {
@@ -194,7 +194,7 @@ Success
 - Header:
     - Authorization: Bearer {token}
 - Query params: 
-    - page (default: 1)
+    - page 
     - order (options: asc | desc, default: desc)
 - Responses
 
@@ -215,7 +215,7 @@ Success
 ---
 ### Update blogs
 
-- Route: /blogs/:authorId/:id
+- Route: /blogs/:id
 - Method: PATCH
 - Header
     - Authorization: Bearer {token}
@@ -249,7 +249,7 @@ Success
 
 ### Delete blogs
 
-- Route: /blogs/:authorId/:id
+- Route: /blogs/:id
 - Method: DELETE
 - Header
     - Authorization: Bearer {token}

@@ -13,7 +13,7 @@ class Connection {
     this.mongoServer = await MongoMemoryServer.create();
     const mongoUri = this.mongoServer.getUri();
 
-    this.connection = await mongoose.createConnection(mongoUri, {
+     this.connection = await mongoose.createConnection(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -36,12 +36,7 @@ class Connection {
   }
 }
 
-/**
- * Create the initial database connection.
- *
- * @async
- * @return {Promise<Object>}
- */
+
 exports.connect = async () => {
   const conn = new Connection();
   await conn.connect();
