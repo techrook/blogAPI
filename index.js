@@ -11,7 +11,7 @@ require('./controllers/auth.controller')
 const authRouter = require("./routes/auth.route")
 const blogRouter = require('./routes/blog.route');
 const userRouter = require('./routes/user.route')
-const port = process.env.PORT;
+const port = process.env.PORT ;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -28,11 +28,14 @@ app.use('/users',passport.authenticate('jwt', { session: false }), userRouter);
 
 //root page
 app.get('/', (req,res)=>{
-    res.send('welcome to falseblog')
+    return res.json({ status: true })
 });
 
 
-
+//ghost route
+app.use('*', (req, res) => {
+    return res.status(404).send({ message: ' not found' })
+})
 
 //starting server
 app.listen(port, ()=>{
@@ -40,3 +43,4 @@ app.listen(port, ()=>{
 })
 
 
+module.exports = app;

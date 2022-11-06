@@ -1,9 +1,10 @@
 const express = require("express");
 const passport = require("passport");
 
-const blogController = require("../controllers/blog.Controllers");
-
 const blogRouter = express.Router();
+
+const blogController = require('../controllers/blog.Controllers');
+const middleware = require('../middleware/blog.middleware')
 
 blogRouter.get("/", blogController.countMiddleware, blogController.getAllBlogs);
 blogRouter.get(
@@ -33,5 +34,3 @@ blogRouter.delete(
   blogController.confirmBlogAuthor,
   blogController.deleteBlog
 );
-
-module.exports = blogRouter;

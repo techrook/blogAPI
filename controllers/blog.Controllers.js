@@ -1,10 +1,12 @@
 const jsonwebtoken = require("jsonwebtoken");
 
+
 const userModel = require("../models/user.models");
 const blogModel = require("../models/blog.Models"); // blog model
 
 // intial count vaule
 let count = 0;
+
 
 // update readcouount function
 async function countMiddleware(req, res, next) {
@@ -124,8 +126,7 @@ const getOneBlog = async (req, res) => {
 const createBlog = (req, res) => {
   const blogData = req.body;
 
-  console.log(req.params);
-  const authorId = req.params.authorId;
+  const authorId =  req.params.authorId;
 
   // // // author value
   const author = authorId;
@@ -173,26 +174,17 @@ const deleteBlog = async (req, res) => {
 };
 
 // update blog function
-const updateBlog = (req, res) => {
-  const blogId = req.params.blogId;
-  const authorId = req.query.authorId; // to confirm its the author thats updating his/her blog
-  const blogUpdates = req.body;
+const updateBlog = (req, res) =>{
+    const blogId = req.params.id
+    const blogUpdates = req.body;
 
-  blogModel
-    .findByIdAndUpdate(blogId, blogUpdates)
-    .then((blog) => {
-      if (blog.author === authorId) {
+    blogModel.findByIdAndUpdate(blogId, blogUpdates)
+    .then(blog =>{
         res.status(202);
         res.send({
-          message: "blog has successfully been updated",
-          data: blog,
-        });
-      } else {
-        res.status(401);
-        res.send({
-          message: "you do not have permission to update this blog",
-        });
-      }
+            message: "blog has successfully been updated",
+            data : blog
+        })
     })
     .catch((err) => {
       res.status(500);
