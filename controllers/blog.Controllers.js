@@ -150,7 +150,7 @@ const deleteBlog = (req, res) =>{
 
 // update blog function
 const updateBlog = (req, res) =>{
-    const blogId = req.params.blogId
+    const blogId = req.params.id
     const authorId = req.query.authorId // to confirm its the author thats updating his/her blog
     const blogUpdates = req.body;
 
