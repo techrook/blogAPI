@@ -19,6 +19,7 @@ async function confirmBlogAuthor(req, res, next){
             message: "your not the author this blog"
         })
     })
+    next();
     
 }
 
