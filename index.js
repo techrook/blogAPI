@@ -38,7 +38,9 @@ app.use('*', (req, res) => {
 })
 
 //starting server
-
+app.listen(3000, ()=>{
+    console.log(`server started at localhost:${port}`)
+})
 
 
 module.exports = app;
