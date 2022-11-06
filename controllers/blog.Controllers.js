@@ -157,7 +157,7 @@ const updateBlog = (req, res) =>{
     blogModel.findByIdAndUpdate(blogId, blogUpdates)
     .then(blog =>{
         if(blog.author === authorId){
-        res.status(202)
+        res.status(202);
         res.send({
             message: "blog has successfully been updated",
             data : blog
