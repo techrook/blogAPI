@@ -12,12 +12,12 @@ describe('Test blog endpoint',  () => {
     beforeAll(async () => {
         conn = await connect()
 
-        await userModel.create({ email: 'person1', password: '123456'});
+        await userModel.create({ email: 'messi@example.com', password: '123456'});
 
         const loginResponse = await request(app)
         .post('/login')
         .send({ 
-            email: 'person1', 
+            email: 'messi@example.com', 
             password: '123456'
         });
 
@@ -35,7 +35,7 @@ describe('Test blog endpoint',  () => {
 
         await blogModel.create({
             "blogInfo" : {
-                "title": "i don change am again ",
+                "title": " cristiano ronaldo is the greatest of all time ",
                 "description": "blog description",
                 "body": "blog body",
                 "tags": "sport"

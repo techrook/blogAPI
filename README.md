@@ -155,7 +155,7 @@ Success
     blogInfo: { 
         "title": 'elon charges  8$ for blue tick',
          "description": "elon charges  8$ for blue tick because twitter is loosing daily and wants to change that", 
-         "body": 'elon charges  8$ for blue tick because twitter is loosing daily and wants to change that ...', 
+         "body": 'elon charges  8$ for blue tick because twitter is loosing daily and wants to change that. so blue ticks are for sell now. im gonna purchase mine ...', 
          "tags": "tech"
          }
 }
@@ -165,6 +165,7 @@ Success
 ### Get blog
 
 - Route: /blogs/:id
+    - Enter blog id with url
 - Method: GET
 - Header
     - Authorization: Bearer {token}
@@ -216,6 +217,7 @@ Success
 ### Update blogs
 
 - Route: /blogs/:id
+    - enter blog id with url
 - Method: PATCH
 - Header
     - Authorization: Bearer {token}
@@ -250,6 +252,7 @@ Success
 ### Delete blogs
 
 - Route: /blogs/:id
+    -  enter blog id with url
 - Method: DELETE
 - Header
     - Authorization: Bearer {token}
