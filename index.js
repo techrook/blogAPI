@@ -8,6 +8,7 @@ require('./db').connect();
 require('./controllers/auth.controller')
 
 //local dependencies 
+const logger = require('./logger/logger')
 const authRouter = require("./routes/auth.route")
 const blogRouter = require('./routes/blog.route');
 const userRouter = require('./routes/user.route')
@@ -28,18 +29,21 @@ app.use('/users',passport.authenticate('jwt', { session: false }), userRouter);
 
 //root page
 app.get('/', (req,res)=>{
+    logger.info('welcome to my blog')
     return res.json({ status: true })
+    
 });
 
 
 //ghost route
 app.use('*', (req, res) => {
+    logger.error(err.message);
     return res.status(404).send({ message: ' not found' })
 })
 
 //starting server
 app.listen(port, ()=>{
-    console.log(`server started at localhost:${port}`)
+    logger.info(`server started at localhost:${port}`)
 })
 
 
