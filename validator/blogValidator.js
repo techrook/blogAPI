@@ -12,6 +12,7 @@ const blogValidatorMiddleware = async (req, res , next) => {
 }
 
 const blogValidator = Joi.object({
+    blogInfo : {
     title: Joi.string()
         .min(5)
         .max(255)
@@ -25,6 +26,7 @@ const blogValidator = Joi.object({
         .max(300)
         .required(),
     tags: Joi.string()
+    }
 })
 
 module.exports = blogValidatorMiddleware
