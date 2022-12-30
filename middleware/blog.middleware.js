@@ -15,7 +15,7 @@ async function confirmBlogAuthor(req, res, next){
         if(authorToString === stringfyBlogAuthor){
             next()
         }
-    }).catch(err => {
+    }).catch(() => {
         res.status(401)
         res.send({
             message: "your not the author this blog"
