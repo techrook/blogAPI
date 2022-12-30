@@ -21,7 +21,7 @@ const BlogSchema = new Schema ({
         require: true
     },
     tags:{
-        type: String, enum: ['tech', 'sport', 'international', 'others']
+        type: String, enum: ['tech', 'sport', 'international','entertainment', 'others']
    }
 },
     author: {
