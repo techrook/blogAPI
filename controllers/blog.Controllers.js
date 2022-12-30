@@ -178,11 +178,10 @@ const  publishBlog = async (req, res) =>{
         res.status(202)
         res.send(blog)
     })
-    .catch((err) =>{
+    .catch(() =>{
         res.status(500)
         res.send({
-            message: "An error occured blog  not updated",
-            data : err
+            message: "An error occured blog  not updated"
         })
     })
 }
