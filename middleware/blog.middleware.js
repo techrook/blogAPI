@@ -8,7 +8,7 @@ async function confirmBlogAuthor(req, res, next){
     const author = req.user._id 
     const authorToString = author.toString()
     
-    blogModel.findById(id)
+   await blogModel.findById(id)
     .then(blog =>{
         const blogAuthor = blog.author
         const stringfyBlogAuthor = blogAuthor.toString()
