@@ -8,7 +8,7 @@ async function confirmBlogAuthor(req, res, next){
     const id = req.params.id;
     const author = req.user._id 
     const authorToString = author.toString()
-    console.log(Passport)
+    console.log(req.user)
 
    await blogModel.findById(id)
     .then(blog =>{
@@ -17,10 +17,11 @@ async function confirmBlogAuthor(req, res, next){
         if(authorToString === stringfyBlogAuthor){
             next()
         }
-    }).catch(() => {
+    }).catch((err) => {
         res.status(401)
         res.send({
-            message: "your not the author this blog"
+            message: "your not the author this blog",
+            data : err
         })
     })
     next();

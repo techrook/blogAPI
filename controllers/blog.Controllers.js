@@ -170,18 +170,19 @@ const updateBlog = (req, res) =>{
 }
 
 // publishblog from draft to published function
-const  publishBlog = async (req, res) =>{
+const  publishBlog =  (req, res) =>{
     const id = req.params.id
 
-    await blogModel.findByIdAndUpdate(id, {state : "published"})
+     blogModel.findByIdAndUpdate(id, {state : "published"})
     .then((blog) =>{
         res.status(202)
         res.send(blog)
     })
-    .catch(() =>{
+    .catch((err) =>{
         res.status(500)
         res.send({
-            message: "An error occured blog  not updated"
+            message: "An error occured blog  not updated",
+            data : err
         })
     })
 }
