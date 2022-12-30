@@ -170,10 +170,10 @@ const updateBlog = (req, res) =>{
 }
 
 // publishblog from draft to published function
-const publishBlog = (req, res) =>{
+const  publishBlog = async (req, res) =>{
     const id = req.params.id
 
-    blogModel.findByIdAndUpdate(id, {state : "published"})
+    await blogModel.findByIdAndUpdate(id, {state : "published"})
     .then((blog) =>{
         res.status(202)
         res.send(blog)
