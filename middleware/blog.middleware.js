@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const  Passport  = require('passport');
 
 const blogModel = require('../models/blog.Models');// blog model
 
@@ -7,7 +8,8 @@ async function confirmBlogAuthor(req, res, next){
     const id = req.params.id;
     const author = req.user._id 
     const authorToString = author.toString()
-    
+    console.log(Passport)
+
    await blogModel.findById(id)
     .then(blog =>{
         const blogAuthor = blog.author
