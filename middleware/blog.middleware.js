@@ -18,13 +18,11 @@ async function confirmBlogAuthor(req, res, next){
             next()
         }
     }).catch((err) => {
-        res.status(401)
-        res.send({
+        res.status(401).send({
             message: "your not the author this blog",
             data : err
         })
     })
-    next();
     
 }
 

@@ -175,12 +175,10 @@ const  publishBlog =  (req, res) =>{
 
      blogModel.findByIdAndUpdate(id, {state : "published"})
     .then((blog) =>{
-        res.status(202)
-        res.send(blog)
+        res.status(202).send(blog)
     })
     .catch((err) =>{
-        res.status(500)
-        res.send({
+        res.status(500).send({
             message: "An error occured blog  not updated",
             data : err
         })
