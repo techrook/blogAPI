@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const  Passport  = require('passport');
+
 
 const blogModel = require('../models/blog.Models');// blog model
 
@@ -15,7 +14,7 @@ async function confirmBlogAuthor(req, res, next){
         const blogAuthor = blog.author
         const stringfyBlogAuthor = blogAuthor.toString()
         if(authorToString === stringfyBlogAuthor){
-            next()
+             next()
         }
     }).catch((err) => {
         res.status(401).send({
@@ -25,6 +24,7 @@ async function confirmBlogAuthor(req, res, next){
     })
     
 }
+
 
 module.exports = {
     confirmBlogAuthor

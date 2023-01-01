@@ -21,7 +21,8 @@ const BlogSchema = new Schema ({
         require: true
     },
     tags:{
-        type: String, enum: ['tech', 'sport', 'international','entertainment', 'others']
+        type: String, enum: ['tech', 'sport', 'international','entertainment', 'others'],
+        require: true
    }
 },
     author: {
@@ -45,7 +46,6 @@ const BlogSchema = new Schema ({
     }
 })
 
-// BlogSchema.index({author: 'text', title: 'text', tags: 'text'})
 
 
 

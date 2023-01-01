@@ -175,7 +175,10 @@ const  publishBlog =  (req, res) =>{
 
      blogModel.findByIdAndUpdate(id, {state : "published"})
     .then((blog) =>{
-        res.status(202).send(blog)
+        res.status(202).send({
+            message: "blog stated has sucessfully been updated",
+            
+        })
     })
     .catch((err) =>{
         res.status(500).send({
@@ -185,6 +188,11 @@ const  publishBlog =  (req, res) =>{
     })
 }
 
+async function search(req, res, next) {
+    const search = req.query.search;
+s
+}
+
 module.exports = {
     getAllBlogs,
     getOneBlog,
@@ -192,6 +200,7 @@ module.exports = {
     deleteBlog,
     updateBlog,
     publishBlog,
-    countMiddleware
+    countMiddleware,
+    search
 
 }

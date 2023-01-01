@@ -36,7 +36,7 @@ app.get('/', (req,res)=>{
 
 
 //ghost route
-app.use('*', (req, res) => {
+app.use('*', (req, res, err) => {
     logger.error(err.message);
     return res.status(404).send({ message: ' not found' })
 })
