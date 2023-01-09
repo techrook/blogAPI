@@ -20,10 +20,6 @@ blogRouter.patch('/publishblog/:id', passport.authenticate('jwt', { session: fal
 blogRouter.patch('/:id',passport.authenticate('jwt', { session: false }), middleware.confirmBlogAuthor, blogController.updateBlog);
 // delete a blog
 blogRouter.delete('/:id',passport.authenticate('jwt', { session: false }), middleware.confirmBlogAuthor, blogController.deleteBlog);
-// search for a particular blog
-blogRouter.get('/search',blogController.countMiddleware,passport.authenticate('jwt', { session: false }),blogController.search );
-
-
 
  
 module.exports =  blogRouter 

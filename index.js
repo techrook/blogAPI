@@ -1,7 +1,6 @@
 //build dependencies
 const express = require("express");
 const passport = require('passport');
-const app = express()
 const bodyParser = require('body-parser')
 require('dotenv').config();
 require('./db').connect();
@@ -12,6 +11,8 @@ const logger = require('./logger/logger')
 const authRouter = require("./routes/auth.route")
 const blogRouter = require('./routes/blog.route');
 const userRouter = require('./routes/user.route')
+
+const app = express()
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));

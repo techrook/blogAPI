@@ -42,7 +42,6 @@ const getAllBlogs =  async (req, res) =>{
     
     const startIndex = (page-1)*limit;
 
-    // var blogState = blog.state
     await blogModel.find({state : "published"})
     .populate({path : "author", model: "users"})
     .limit(limit)
@@ -188,11 +187,6 @@ const  publishBlog =  (req, res) =>{
     })
 }
 
-async function search(req, res, next) {
-    const search = req.query.search;
-s
-}
-
 module.exports = {
     getAllBlogs,
     getOneBlog,
@@ -200,7 +194,5 @@ module.exports = {
     deleteBlog,
     updateBlog,
     publishBlog,
-    countMiddleware,
-    search
-
+    countMiddleware
 }
