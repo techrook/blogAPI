@@ -2,8 +2,8 @@
 const express = require("express");
 const passport = require('passport');
 const bodyParser = require('body-parser')
-require('dotenv').config();
-require('./db').connect();
+const CONFIG = require('./config/config')
+require('./DB/db').connect();
 require('./controllers/auth.controller')
 
 //local dependencies 
@@ -13,7 +13,7 @@ const blogRouter = require('./routes/blog.route');
 const userRouter = require('./routes/user.route')
 
 const app = express()
-const port = process.env.PORT || 3000;
+const port = CONFIG.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use('/', authRouter);
 
 // blogs endpoint
-app.use('/blogs', blogRouter); 
+app.use('/v1/api/blogs', blogRouter); 
 
 //users endpoint 
 app.use('/users',passport.authenticate('jwt', { session: false }), userRouter);
@@ -36,10 +36,12 @@ app.get('/', (req,res)=>{
 });
 
 
-//ghost route
-app.use('*', (req, res, err) => {
-    logger.error(err.message);
-    return res.status(404).send({ message: ' not found' })
+ // error handler middleware
+ app.use((err, req, res, next) => {
+    logger.error(err.message)
+     const errorStatus = err.status || 500
+     res.status(errorStatus).send(err.message)
+     next()
 })
 
 //starting server

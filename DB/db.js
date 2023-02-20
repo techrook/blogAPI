@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
+const CONFIG = require('../config/config')
 
-
+mongoose.set("strictQuery", false);
 
     const connect = (url) => {
-        mongoose.connect(process.env.MONGODB_URL)
+        mongoose.connect(CONFIG.MONGODB_URL)
     
         mongoose.connection.on("connected", () => {
             console.log("Connected to MongoDB Successfully");

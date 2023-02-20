@@ -5,7 +5,7 @@ const Schema =  mongoose.Schema;
 
 
 const BlogSchema = new Schema ({
-    blogInfo : {
+
     title: {
         type: String,
         require: true,
@@ -15,7 +15,6 @@ const BlogSchema = new Schema ({
         type: String,
         require: true,
     },
-    
     body : {
         type: String,
         require: true
@@ -23,8 +22,7 @@ const BlogSchema = new Schema ({
     tags:{
         type: String, enum: ['tech', 'sport', 'international','entertainment', 'others'],
         require: true
-   }
-},
+   },
     author: {
         type: mongoose.Types.ObjectId, 
         ref: "users"
@@ -43,7 +41,11 @@ const BlogSchema = new Schema ({
     timestamp : {
         type: Date,
         default: Date.now
-    }
+    },
+    lastUpdateAt : {
+        type: Date,
+        default: Date.now
+    },
 })
 
 

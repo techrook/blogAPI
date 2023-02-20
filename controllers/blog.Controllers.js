@@ -93,24 +93,17 @@ const getOneBlog = async (req, res) =>{
 
 // function to create new blog
 const createBlog = (req,res) =>{
-    const blogData = req.body;
+    const {title, description, body, tags} = req.body;
+    const author = req.user._id;
+    const blogBodyLenght = body.length
+   const readTime = Math.round(blogBodyLenght/4%60)
+   
 
-    const authorId =  req.params.authorId;
+    req.body.author = author 
+   req.body.read_count = count
+    req.body.read_time = readTime 
 
-
-    // // // author value
-    const author = authorId;
-
-    
-    // calculating for readtime
-    const blogBody = blogData.blogInfo.body
-    const blogBodyLenght = blogBody.length
-
-    readTime = Math.round(blogBodyLenght/4%60)
-
-    blogModel.create({blogInfo: blogData.blogInfo,
-        author:author , read_time: `${readTime} minutes`, read_count: count
-    })
+    blogModel.create({...req.body})
         .then(blogData =>{
             res.status(201)
             res.send(blogData)
