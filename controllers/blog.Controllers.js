@@ -1,5 +1,3 @@
-const mongoose = require("mongoose");
-
 const blogModel = require('../models/blog.Models');// blog model
 
 let count=0; // intial count vaule
@@ -64,30 +62,19 @@ const getAllBlogs =  async (req, res) =>{
 const getOneBlog = async (req, res) =>{
     const Id = req.params.id
 
-    await blogModel.findById(Id).populate({path : "author", model: "users"})
-    .then(blog =>{
-        if ({state : 'published'}){
+ const blog =   await blogModel.findById(Id).populate({path : "author", model: "users"})
 
+        if ({state : 'published'}){
         res.status(200)
         res.send(blog)
         console.log(state)
         }else{
             res.status(404)
             res.send({
-                message: "this blog has not been published yet",
+                message: "not found",
             })
         }
-
-    }).catch(err => {
-        res.status(404)
-        res.send({
-            message: " blog not  found",
-            data: err
-        })
-    })
-
-   
-}
+    }
      
 
 
@@ -149,7 +136,6 @@ const updateBlog = (req, res) =>{
         res.status(202);
         res.send({
             message: "blog has successfully been updated",
-            data : blog
         })
     })
     .catch((err) =>{
@@ -169,7 +155,7 @@ const  publishBlog =  (req, res) =>{
     .then((blog) =>{
         res.status(202).send({
             message: "blog stated has sucessfully been updated",
-            
+            data : blog
         })
     })
     .catch((err) =>{

@@ -3,13 +3,13 @@
 const blogModel = require('../models/blog.Models');// blog model
 
 
-async function confirmBlogAuthor(req, res, next){
+ function confirmBlogAuthor(req, res, next){
     const id = req.params.id;
     const author = req.user._id 
     const authorToString = author.toString()
     console.log(req.user)
 
-   await blogModel.findById(id)
+ blogModel.findById(id)
     .then(blog =>{
         const blogAuthor = blog.author
         const stringfyBlogAuthor = blogAuthor.toString()
