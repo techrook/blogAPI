@@ -3,7 +3,7 @@ const express = require("express");
 const passport = require('passport');
 const bodyParser = require('body-parser')
 const CONFIG = require('./config/config')
-require('./DB/db').connect();
+
 require('./controllers/auth.controller')
 
 //local dependencies 
@@ -13,7 +13,6 @@ const blogRouter = require('./routes/blog.route');
 const userRouter = require('./routes/user.route')
 
 const app = express()
-const port = CONFIG.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -44,10 +43,7 @@ app.get('/', (req,res)=>{
      next()
 })
 
-//starting server
-app.listen(port, ()=>{
-    logger.info(`server started at localhost:${port}`)
-})
+
 
 
 module.exports = app;
