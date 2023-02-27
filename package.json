@@ -2,7 +2,7 @@
   "name": "falseblog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
     "start:dev": "nodemon app.js"
