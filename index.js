@@ -3,6 +3,9 @@ const express = require("express");
 const passport = require('passport');
 const bodyParser = require('body-parser')
 const CONFIG = require('./config/config')
+require('./DB/db').connect();
+
+const PORT = CONFIG.PORT || 3000;
 
 require('./controllers/auth.controller')
 
@@ -43,6 +46,8 @@ app.get('/', (req,res)=>{
      next()
 })
 
-
+app.listen(PORT, () => {
+    console.log('Listening on port, ', PORT)
+})
 
 module.exports = app;
