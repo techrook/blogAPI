@@ -13,6 +13,7 @@ const blogRouter = require('./routes/blog.route');
 const userRouter = require('./routes/user.route')
 
 const app = express()
+const PORT = CONFIG.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
