@@ -92,7 +92,7 @@ const createBlog = (req,res) =>{
 
     blogModel.create({...req.body})
         .then(blogData =>{
-            res.status(201)
+            res.status(200)
             res.send(blogData)
             
 
