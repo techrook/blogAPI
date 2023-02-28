@@ -40,5 +40,9 @@ app.get('/', (req,res)=>{
     return res.status(404).json({ message: 'route not found' })
 })
 
+app.listen(PORT, () => {
+    console.log('Listening on port, ', PORT)
+})
+
 
 module.exports = app;
