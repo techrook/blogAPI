@@ -3,9 +3,6 @@ const express = require("express");
 const passport = require('passport');
 const bodyParser = require('body-parser')
 const CONFIG = require('./config/config')
-require('./DB/db').connect();
-
-const PORT = CONFIG.PORT || 3000;
 
 require('./controllers/auth.controller')
 
@@ -39,15 +36,9 @@ app.get('/', (req,res)=>{
 
 
  // error handler middleware
- app.use((err, req, res, next) => {
-    logger.error(err.message)
-     const errorStatus = err.status || 500
-     res.status(errorStatus).send(err.message)
-     next()
+ app.use('*', (req, res) => {
+    return res.status(404).json({ message: 'route not found' })
 })
 
-app.listen(PORT, () => {
-    console.log('Listening on port, ', PORT)
-})
 
 module.exports = app;
