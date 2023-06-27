@@ -56,7 +56,6 @@ This is an api for a blog
 
 
 ## APIs
----
 
 ### Signup User
 
